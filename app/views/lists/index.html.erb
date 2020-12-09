@@ -5,8 +5,9 @@
         <div class="card-header"><%= list.name %></div>
         <div class="card-body p-0">
           <div class="list-group list-group-flush">
-            <div class="list-group-item">Item 1</div>
-            <div class="list-group-item">Item 2</div>
+            <% list.tasks.each do |task| %>
+              <div class="list-group-item"><%= task.name %></div>
+            <% end %>
           </div>
         </div>
       </div>
