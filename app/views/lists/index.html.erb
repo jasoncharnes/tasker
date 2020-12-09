@@ -5,8 +5,16 @@
         <div class="card-header"><%= list.name %></div>
         <div class="card-body p-0">
           <div class="list-group list-group-flush">
-            <% list.tasks.each do |task| %>
-              <div class="list-group-item"><%= task.name %></div>
+            <% list.tasks.incomplete_first.each do |task| %>
+              <% if task.complete? %>
+                <div class="list-group-item">
+                  <del>
+                    <%= task.name %>
+                  </del>
+                </div>
+              <% else %>
+                <div class="list-group-item"><%= task.name %></div>
+              <% end %>
             <% end %>
           </div>
         </div>
