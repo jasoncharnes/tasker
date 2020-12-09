@@ -837,7 +837,7 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@rails/actioncable@^6.0.0":
+"@rails/actioncable@>= 6.0", "@rails/actioncable@^6.0.0":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3.tgz#722b4b639936129307ddbab3a390f6bcacf3e7bc"
   integrity sha512-I01hgqxxnOgOtJTGlq0ZsGJYiTEEiSGVEGQn3vimZSqEP1HqzyFNbzGTq14Xdyeow2yGJjygjoFF1pmtE+SQaw==
@@ -1665,6 +1665,13 @@ bytes@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
   integrity sha512-zauLjrfCG+xvoyaqLoV8bLVXXNGC4JqlxFCutSDWA6fJrTo2ZuvLYTqZ7aHBLZSMOopbzwv8f+wZcVzfVTI2Dg==
+
+"cable_ready@>= 4.4":
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-4.4.3.tgz#eada6f43c471f9afc7b08df49b000f27d9b2cb66"
+  integrity sha512-yp2JeCOvFLxIAdEa8jGa+ydZrlk1++ClK95OfCl/HrQXJ5p0PwNFGxDmgz2zqSMM1JM5p87JDw3QNsQD71NkCw==
+  dependencies:
+    morphdom "^2.6.1"
 
 cacache@^12.0.2:
   version "12.0.4"
@@ -4576,6 +4583,11 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
+morphdom@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/morphdom/-/morphdom-2.6.1.tgz#e868e24f989fa3183004b159aed643e628b4306e"
+  integrity sha512-Y8YRbAEP3eKykroIBWrjcfMw7mmwJfjhqdpSvoqinu8Y702nAwikpXcNFDiIkyvfCLxLM9Wu95RZqo4a9jFBaA==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -6813,6 +6825,14 @@ stimulus@^2.0.0:
   dependencies:
     "@stimulus/core" "^2.0.0"
     "@stimulus/webpack-helpers" "^2.0.0"
+
+stimulus_reflex@^3.4.0-pre8:
+  version "3.4.0-pre8"
+  resolved "https://registry.yarnpkg.com/stimulus_reflex/-/stimulus_reflex-3.4.0-pre8.tgz#47eac3ac8fde96c81a4c2950d7bab0e69e856b20"
+  integrity sha512-2FMmslXtmKQXJUkWntrzDS+vBtJVNWe2fCbK8mvBKCcZ5rsj8Lkv5cM3eSNQ/LYhmxCPuCQUf8HYgjk9D5jRFw==
+  dependencies:
+    "@rails/actioncable" ">= 6.0"
+    cable_ready ">= 4.4"
 
 stream-browserify@^2.0.1:
   version "2.0.2"
