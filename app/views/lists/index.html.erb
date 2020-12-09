@@ -1,6 +1,6 @@
 <% @lists.each do |list| %>
   <div class="row justify-content-center my-3">
-    <div class="col-6">
+    <div class="col-10 col-lg-6">
       <div class="card">
         <div class="card-header"><%= list.name %></div>
         <div class="card-body p-0">
@@ -13,7 +13,12 @@
                   </del>
                 </div>
               <% else %>
-                <div class="list-group-item"><%= task.name %></div>
+                <div class="list-group-item" data-controller="task">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="<%= dom_id(task) %>" data-reflex="change->TaskReflex#complete" data-id="<%= task.id %>">
+                    <label for="<%= dom_id(task) %>" class="custom-control-label"><%= task.name %></label>
+                  </div>
+                </div>
               <% end %>
             <% end %>
           </div>
