@@ -1,4 +1,4 @@
-<div class="list-group-item" data-controller="task">
+<div class="list-group-item d-flex justify-content-between" data-controller="task">
   <div class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input" id="<%= dom_id(task) %>" data-reflex="change->TaskReflex#toggle" data-id="<%= task.id %>" <%= 'checked' if task.complete? %>>
     <label for="<%= dom_id(task) %>" class="custom-control-label">
@@ -10,5 +10,10 @@
         <%= task.name %>
       <% end %>
     </label>
+  </div>
+  <div>
+    <a href="#" data-action="click->task#destroy" data-id="<%= task.id %>">
+      <i class="fa fa-times text-danger"></i>
+    </a>
   </div>
 </div>
