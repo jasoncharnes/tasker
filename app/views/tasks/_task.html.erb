@@ -1,0 +1,14 @@
+<div class="list-group-item" data-controller="task">
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="<%= dom_id(task) %>" data-reflex="change->TaskReflex#toggle" data-id="<%= task.id %>" <%= 'checked' if task.complete? %>>
+    <label for="<%= dom_id(task) %>" class="custom-control-label">
+      <% if task.complete? %>
+        <del>
+          <%= task.name %>
+        </del>
+      <% else %>
+        <%= task.name %>
+      <% end %>
+    </label>
+  </div>
+</div>
