@@ -8,6 +8,12 @@
             <%= render list.tasks.incomplete_first %>
           </div>
         </div>
+        <div class="card-footer">
+          <%= bootstrap_form_with model: Task.new, url: '', layout: :inline, data: { reflex: "submit->Task#create", list_id: list.id } do |form| %>
+            <%= form.text_field :name, skip_label: true, wrapper_class: "flex-fill mr-2", class: "w-100", placeholder: "What needs to be done?" %>
+            <%= form.submit "Add task" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
