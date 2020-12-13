@@ -8,7 +8,16 @@ export default class extends Controller {
     StimulusReflex.register(this);
   }
 
+  beforeCreateTask(element) {
+    element.querySelectorAll("input").forEach((input) => input.blur());
+    element.classList.add("form-disabled");
+  }
+
   createTaskSuccess() {
     this.formTarget.reset();
+  }
+
+  createTaskError(element, name, error) {
+    alert(error);
   }
 }
