@@ -10,6 +10,7 @@
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+    "sortablejs": "^1.12.0",
     "stimulus": "^2.0.0",
     "stimulus_reflex": "^3.4.0-pre8",
     "turbolinks": "^5.2.0"

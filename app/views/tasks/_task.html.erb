@@ -1,4 +1,4 @@
-<div class="list-group-item d-flex justify-content-between" data-controller="task">
+<div class="list-group-item d-flex justify-content-between <%= 'completed' if task.complete? %>" data-controller="task" data-id="<%= task.id %>">
   <div class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input" id="<%= dom_id(task) %>" data-reflex="change->TaskReflex#toggle" data-id="<%= task.id %>" <%= 'checked' if task.complete? %>>
     <label for="<%= dom_id(task) %>" class="custom-control-label">
