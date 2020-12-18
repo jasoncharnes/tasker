@@ -13,6 +13,11 @@ class TaskReflex < StimulusReflex::Reflex
     @task.insert_at(position)
   end
 
+  def assign
+    @task.update(assignee_id: element.value)
+    morph :nothing
+  end
+
   private
 
   def find_task
