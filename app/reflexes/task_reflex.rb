@@ -15,7 +15,7 @@ class TaskReflex < StimulusReflex::Reflex
 
   def assign
     @task.update(assignee_id: element.value)
-    morph :nothing
+    morph "#task-#{@task.id}-assignee", @task.assignee_name
   end
 
   private

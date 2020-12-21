@@ -6,8 +6,10 @@
         <del>
           <%= task.name %>
         </del>
+        <span class="text-muted" id="task-<%= task.id %>-assignee"><%= task.assignee_name %></span>
       <% else %>
         <%= task.name %>
+        <span class="text-muted" id="task-<%= task.id %>-assignee"><%= task.assignee_name %></span>
       <% end %>
     </label>
     <div class="collapse mt-2" id="collapse-<%= task.id %>">
