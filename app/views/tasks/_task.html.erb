@@ -6,7 +6,9 @@
         <del>
           <%= task.name %>
         </del>
-        <span class="text-muted" id="task-<%= task.id %>-assignee"><%= task.assignee_name %></span>
+        <% if task.completer %>
+          <span class="text-muted">Completed by: <%= task.completer_name %></span>
+        <% end %>
       <% else %>
         <%= task.name %>
         <span class="text-muted" id="task-<%= task.id %>-assignee"><%= task.assignee_name %></span>
