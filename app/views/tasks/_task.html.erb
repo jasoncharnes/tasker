@@ -1,4 +1,4 @@
-<div id="<%= dom_id(task) %>" class="list-group-item d-flex justify-content-between <%= 'completed' if task.complete? %>" data-controller="task" data-id="<%= task.id %>">
+<div id="<%= dom_id(task) %>" class="list-group-item d-flex justify-content-between <%= 'incomplete' unless task.complete? %>" data-controller="task" data-id="<%= task.id %>" data-task-incomplete-class="incomplete">
   <div class="custom-control custom-checkbox mr-2" data-task-target="checkbox">
     <input type="checkbox" class="custom-control-input" id="<%= dom_id(task) %>_checkbox" data-reflex="change->TaskReflex#toggle" data-id="<%= task.id %>" <%= 'checked' if task.complete? %>>
     <label for="<%= dom_id(task) %>_checkbox" class="custom-control-label">
