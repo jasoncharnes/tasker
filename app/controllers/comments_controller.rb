@@ -15,6 +15,12 @@ class CommentsController < ApplicationController
         selector: "#new-comment",
         html: render_to_string(partial: "comments/form", locals: { new_comment: Comment.new })
       )
+    else
+      cable_ready[TaskChannel].outer_html(
+        selector: "#new-comment",
+        html: render_to_string(partial: "comments/form", locals: { new_comment: @comment }),
+        focus_selector: "#comment-body"
+      )
     end
 
     cable_ready.broadcast_to(@task)
