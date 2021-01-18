@@ -23,6 +23,9 @@
     <%= select_tag :assignee, options_from_collection_for_select(User.all, :id, :name, task.assignee_id), class: "custom-select", data: { reflex: "change->Task#assign", id: task.id } %>
   </div>
   <div class="d-flex">
+    <%= link_to list_task_path(task.list, task), class: "mr-2" do %>
+      <i class="fa fa-comments text-secondary"></i>
+    <% end %>
     <a href="#collapse-<%= task.id %>" data-toggle="collapse" class="mr-2">
       <i class="fa fa-edit text-primary"></i>
     </a>

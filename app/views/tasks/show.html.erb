@@ -1,0 +1,11 @@
+<h2 class="my-3"><%= @task.name %></h2>
+<% if @task.assignee %>
+  <p class="text-muted">Assigned to: <%= @task.assignee_name %></p>
+<% end %>
+<% if @task.complete? %>
+  <p class="text-muted">Completed by: <%= @task.completer_name %></p>
+<% end %>
+<%= link_to "Back to lists", root_path %>
+<hr>
+<h4 class="mb-3">Comments</h4>
+<%= render @task.comments %>
