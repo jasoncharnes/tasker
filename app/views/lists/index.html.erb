@@ -1,23 +1,25 @@
 <div class="my-3">
   <%= link_to "New list", new_list_path, class: "btn btn-primary", remote: true %>
 </div>
-<% @lists.each do |list| %>
-  <div class="row my-3" data-controller="list">
-    <div class="col">
-      <div class="card">
-        <div class="card-header"><%= list.name %></div>
-        <div class="card-body p-0">
-          <div class="list-group list-group-flush" data-list-target="tasks">
-            <%= render list.tasks %>
+<div id="lists">
+  <% @lists.each do |list| %>
+    <div class="row my-3" data-controller="list">
+      <div class="col">
+        <div class="card">
+          <div class="card-header"><%= list.name %></div>
+          <div class="card-body p-0">
+            <div class="list-group list-group-flush" data-list-target="tasks">
+              <%= render list.tasks %>
+            </div>
           </div>
-        </div>
-        <div class="card-footer">
-          <%= bootstrap_form_with model: @new_task, id: "task-form-for-list-#{list.id}", url: '', layout: :inline, data: { reflex: "submit->List#create_task", list_id: list.id, list_target: "form" } do |form| %>
-            <%= form.text_field :name, skip_label: true, wrapper_class: "flex-fill mr-2", class: "w-100", placeholder: "What needs to be done?" %>
-            <%= form.submit "Add task" %>
-          <% end %>
+          <div class="card-footer">
+            <%= bootstrap_form_with model: @new_task, id: "task-form-for-list-#{list.id}", url: '', layout: :inline, data: { reflex: "submit->List#create_task", list_id: list.id, list_target: "form" } do |form| %>
+              <%= form.text_field :name, skip_label: true, wrapper_class: "flex-fill mr-2", class: "w-100", placeholder: "What needs to be done?" %>
+              <%= form.submit "Add task" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

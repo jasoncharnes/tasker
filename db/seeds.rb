@@ -18,7 +18,7 @@ end
 
 list = List.create(name: Faker::Hipster.sentence)
 
-10.times do
+5.times do
   completed = Faker::Boolean.boolean(true_ratio: 0.2)
   list.tasks.create(
     creator: users.sample,
