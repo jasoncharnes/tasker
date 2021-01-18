@@ -32,6 +32,13 @@ class ListsController < ApplicationController
     cable_ready.broadcast_to(current_user)
   end
 
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy!
+    cable_ready[ListsChannel].remove(selector: dom_id(@list))
+    cable_ready.broadcast_to(current_user)
+  end
+
   private
 
   def list_params

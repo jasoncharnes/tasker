@@ -1,7 +1,10 @@
-<div class="row my-3" data-controller="list">
+<div class="row my-3" data-controller="list" id="<%= dom_id(list) %>">
   <div class="col">
     <div class="card">
-      <div class="card-header"><%= list.name %></div>
+      <div class="card-header d-flex justify-content-between">
+        <%= list.name %>
+        <%= link_to "Delete", list_path(list), method: :delete, class: "text-danger", remote: true, data: { confirm: "Are you sure you want to delete #{list.name}?" } %>
+      </div>
       <div class="card-body p-0">
         <div class="list-group list-group-flush" data-list-target="tasks">
           <% if list.tasks.any? %>
