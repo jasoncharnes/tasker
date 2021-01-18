@@ -11,14 +11,4 @@
 <div id="comments" data-controller="comments" data-comments-task-id="<%= @task.id %>">
   <%= render @task.comments %>
 </div>
-<div class="card">
-  <div class="card-header">
-    New comment
-  </div>
-  <div class="card-body">
-    <%= bootstrap_form_with model: @new_comment, url: list_task_comments_path(@task.list, @task) do |form| %>
-      <%= form.text_area :body, skip_label: true %>
-      <%= form.primary %>
-    <% end %>
-  </div>
-</div>
+<%= render "comments/form", new_comment: @new_comment %>
