@@ -1,6 +1,9 @@
+<div class="my-3">
+  <%= link_to "New list", new_list_path, class: "btn btn-primary", remote: true %>
+</div>
 <% @lists.each do |list| %>
-  <div class="row justify-content-center my-3" data-controller="list">
-    <div class="col-10 col-lg-6">
+  <div class="row my-3" data-controller="list">
+    <div class="col">
       <div class="card">
         <div class="card-header"><%= list.name %></div>
         <div class="card-body p-0">
