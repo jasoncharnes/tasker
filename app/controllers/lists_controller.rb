@@ -22,8 +22,14 @@ class ListsController < ApplicationController
         selector: "#new-list",
         html: render_to_string(@list)
       )
-      cable_ready.broadcast_to(current_user)
+    else
+      cable_ready[ListsChannel].morph(
+        selector: "#new-list",
+        html: render_to_string(partial: "lists/form", locals: { list: @list })
+      )
     end
+
+    cable_ready.broadcast_to(current_user)
   end
 
   private
