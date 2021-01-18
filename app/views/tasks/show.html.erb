@@ -8,7 +8,7 @@
 <%= link_to "Back to lists", root_path %>
 <hr>
 <h4 class="mb-3">Comments</h4>
-<div id="comments">
+<div id="comments" data-controller="comments" data-comments-task-id="<%= @task.id %>">
   <%= render @task.comments %>
 </div>
 <div class="card">
