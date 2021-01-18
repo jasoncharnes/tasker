@@ -1,9 +1,10 @@
-<div class="card" id="new-list">
+<div class="card mb-3" id="list-<%= list.client_id %>">
   <div class="card-header">
     New list
   </div>
   <div class="card-body">
     <%= bootstrap_form_with model: list do |form| %>
+      <%= form.hidden_field :client_id %>
       <%= form.text_field :name %>
       <%= form.primary %>
     <% end %>
