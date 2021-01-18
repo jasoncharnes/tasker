@@ -20,7 +20,7 @@ class ListsController < ApplicationController
     if @list.save
       cable_ready[ListsChannel].outer_html(
         selector: "#new-list",
-        html: render_to_string(@list)
+        html: render_to_string(@list, assigns: { new_task: Task.new })
       )
     else
       cable_ready[ListsChannel].morph(

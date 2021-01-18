@@ -3,13 +3,13 @@
     <div class="card">
       <div class="card-header"><%= list.name %></div>
       <div class="card-body p-0">
-        <% if list.tasks.any? %>
-          <div class="list-group list-group-flush" data-list-target="tasks">
+        <div class="list-group list-group-flush" data-list-target="tasks">
+          <% if list.tasks.any? %>
             <%= render list.tasks %>
-          </div>
-        <% else %>
-          <h5 class="p-4 mb-0">No tasks</h5>
-        <% end %>
+          <% else %>
+            <h5 class="p-4 mb-0">No tasks</h5>
+          <% end %>
+        </div>
       </div>
       <div class="card-footer">
         <%= bootstrap_form_with model: @new_task, id: "task-form-for-list-#{list.id}", url: '', layout: :inline, data: { reflex: "submit->List#create_task", list_id: list.id, list_target: "form" } do |form| %>

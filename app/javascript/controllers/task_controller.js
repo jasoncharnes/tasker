@@ -20,6 +20,7 @@ export default class extends Controller {
   }
 
   destroy(event) {
+    event.preventDefault();
     const confirmation = confirm("Are you sure?");
 
     if (confirmation) {
