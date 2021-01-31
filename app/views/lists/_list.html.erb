@@ -6,13 +6,16 @@
         <%= link_to "Delete", list_path(list), method: :delete, class: "text-danger", remote: true, data: { confirm: "Are you sure you want to delete #{list.name}?" } %>
       </div>
       <div class="card-body p-0">
-        <div class="list-group list-group-flush" data-list-target="tasks">
-          <% if list.tasks.any? %>
-            <%= render list.tasks %>
-          <% else %>
-            <h5 class="p-4 mb-0">No tasks</h5>
-          <% end %>
-        </div>
+        <% if list.tasks.any? %>
+          <div class="list-group list-group-flush" id="incomplete-tasks" data-list-target="tasks">
+            <%= render list.tasks.incomplete %>
+          </div>
+          <div class="list-group list-group-flush border-top" id="complete-tasks">
+            <%= render list.tasks.complete %>
+          </div>
+        <% else %>
+          <h5 class="p-4 mb-0">No tasks</h5>
+        <% end %>
       </div>
       <div class="card-footer">
         <%= bootstrap_form_with model: @new_task, id: "task-form-for-list-#{list.id}", url: '', layout: :inline, data: { reflex: "submit->List#create_task", list_id: list.id, list_target: "form" } do |form| %>

@@ -1,5 +1,5 @@
 class List < ApplicationRecord
-  has_many :tasks, -> { incomplete_first.order(position: :asc) }, dependent: :destroy
+  has_many :tasks, dependent: :destroy
   validates :name, presence: true
 
   def client_id

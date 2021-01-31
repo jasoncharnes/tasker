@@ -6,7 +6,8 @@ class Task < ApplicationRecord
   belongs_to :list
   has_many :comments, -> { order(created_at: :asc) }, as: :commentable
   validates :name, presence: true
-  scope :incomplete_first, -> { order(completed_at: :desc) }
+  scope :complete, -> { where.not(completed_at: nil).order(updated_at: :asc) }
+  scope :incomplete, -> { where(completed_at: nil).order(position: :asc) }
   delegate :name, to: :assignee, prefix: true, allow_nil: true
   delegate :name, to: :completer, prefix: true, allow_nil: true
 
