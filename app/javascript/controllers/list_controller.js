@@ -1,4 +1,6 @@
 import { Controller } from "stimulus";
+import consumer from "../channels/consumer";
+import CableReady from "cable_ready";
 import StimulusReflex from "stimulus_reflex";
 import Sortable from "sortablejs";
 
@@ -7,6 +9,15 @@ export default class extends Controller {
 
   connect() {
     StimulusReflex.register(this);
+
+    consumer.subscriptions.create(
+      { channel: "ListChannel", list_id: this.data.get("id") },
+      {
+        received: (data) => {
+          if (data.cableReady) CableReady.perform(data.operations);
+        },
+      }
+    );
 
     Sortable.create(this.tasksTarget, {
       handle: ".incomplete",
