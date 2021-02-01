@@ -20,6 +20,16 @@ class TaskReflex < StimulusReflex::Reflex
 
   def destroy
     @task.destroy
+
+    cable_ready[ListChannel]
+      .remove(selector: "#task_#{@task.id}")
+      .broadcast_to(@task.list)
+
+    if @task.list.tasks.empty?
+      cable_ready[ListChannel]
+        .remove_css_class(selector: "#list_#{@task.list_id} #no-tasks", name: "d-none")
+        .broadcast_to(@task.list)
+    end
   end
 
   def reorder(position)

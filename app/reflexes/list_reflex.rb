@@ -10,6 +10,7 @@ class ListReflex < StimulusReflex::Reflex
           position: "beforeend",
           html: ApplicationController.render(@new_task)
         )
+        .add_css_class(selector: "#list_#{list.id} #no-tasks", name: "d-none")
         .broadcast_to(list)
       @new_task = Task.new
     end
