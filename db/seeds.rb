@@ -1,9 +1,12 @@
+team = Team.create(name: "SR Team")
+
 user = User.create(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: "user@example.com",
   password: "password",
-  password_confirmation: "password"
+  password_confirmation: "password",
+  team: team
 )
 
 users = 5.times.map do
@@ -12,11 +15,12 @@ users = 5.times.map do
     last_name: Faker::Name.last_name,
     email: Faker::Internet.safe_email,
     password: "password",
-    password_confirmation: "password"
+    password_confirmation: "password",
+    team: team
   )
 end
 
-list = List.create(name: Faker::Hipster.sentence)
+list = List.create(name: Faker::Hipster.sentence, team: team)
 
 tasks = 5.times.map do
   completed = Faker::Boolean.boolean(true_ratio: 0.2)
