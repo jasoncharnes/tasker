@@ -57,4 +57,31 @@ RSpec.describe TaskReflex, type: :reflex do
       end
     end
   end
+
+  describe '#assign' do
+    subject { reflex.run(:assign) }
+
+    let(:task) { FactoryBot.create(:task) }
+    let(:assignee) { FactoryBot.create(:user) }
+
+    it 'assigns a user a task' do
+      reflex.element.dataset.id = task.id
+      reflex.element.value = assignee.id
+      expect { subject }.to change { task.reload.assignee }.from(nil).to(assignee)
+      expect(subject).to morph("#task-#{task.id}-assignee").with(assignee.name)
+    end
+  end
+
+  describe '#reorder' do
+    subject { reflex.run(:reorder, position) }
+
+    let(:task) { FactoryBot.create(:task, position: 10) }
+    let(:position) { 5 }
+
+    it 'reorders a task' do
+      reflex.element.dataset.id = task.id
+      expect { subject }.to change { task.reload.position }.from(10).to(5)
+      expect(subject).to morph(:nothing)
+    end
+  end
 end
