@@ -13,7 +13,10 @@
 
   <body>
     <div class="container">
-      <h3><%= current_user.team.name %></h3>
+      <div class="my-4 d-flex justify-content-between align-items-center">
+        <h3><%= current_user.team.name %></h3>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      </div>
       <%= yield %>
     </div>
   </body>
