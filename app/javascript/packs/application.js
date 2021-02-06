@@ -18,4 +18,3 @@ require("channels");
 import "controllers";
 import "bootstrap/dist/js/bootstrap";
 import "bootstrap/dist/css/bootstrap";
-import "@fortawesome/fontawesome-free/js/all.js";
