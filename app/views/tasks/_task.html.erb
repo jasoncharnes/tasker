@@ -20,7 +20,7 @@
       <%= form.text_field :name, skip_label: true, class: "mr-2" %>
       <%= form.primary "Update" %>
     <% end %>
-    <%= select_tag :assignee, options_from_collection_for_select(User.all, :id, :name, task.assignee_id), class: "custom-select", data: { reflex: "change->Task#assign", id: task.id } %>
+    <%= select_tag :assignee, options_from_collection_for_select(current_team.users, :id, :name, task.assignee_id), prompt: "Assign user", class: "custom-select", data: { reflex: "change->Task#assign", id: task.id } %>
   </div>
   <div class="d-flex">
     <%= link_to list_task_path(task.list, task), class: "mr-2" do %>

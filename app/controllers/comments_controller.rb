@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   include CableReady::Broadcaster
 
   def create
-    @list = List.find(params[:list_id])
+    @list = current_team.lists.find(params[:list_id])
     @task = @list.tasks.find(params[:task_id])
     @comment = @task.comments.new(comment_params)
 
