@@ -15,7 +15,7 @@
         <h5 id="no-tasks" class="p-4 mb-0 <%= 'd-none' if list.tasks.any? %>">No tasks</h5>
       </div>
       <div class="card-footer">
-        <%= bootstrap_form_with model: @new_task, id: "task-form-for-list-#{list.id}", url: '', layout: :inline, data: { reflex: "submit->List#create_task", list_id: list.id, list_target: "form" } do |form| %>
+        <%= bootstrap_form_with model: @new_task, id: "task-form-for-list-#{list.id}", url: '', layout: :inline, data: { reflex: "submit->List#create_task", list_id: list.to_sgid.to_s, list_target: "form" } do |form| %>
           <%= form.text_field :name, skip_label: true, wrapper_class: "flex-fill mr-2", class: "w-100", placeholder: "What needs to be done?" %>
           <%= form.submit "Add task" %>
         <% end %>

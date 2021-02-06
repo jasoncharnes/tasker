@@ -1,6 +1,6 @@
-<div id="<%= dom_id(task) %>" class="list-group-item d-flex justify-content-between <%= 'incomplete' unless task.complete? %>" data-controller="task" data-id="<%= task.id %>" data-task-incomplete-class="incomplete">
+<div id="<%= dom_id(task) %>" class="list-group-item d-flex justify-content-between <%= 'incomplete' unless task.complete? %>" data-controller="task" data-id="<%= task.to_sgid.to_s %>" data-task-incomplete-class="incomplete">
   <div class="custom-control custom-checkbox mr-2" data-task-target="checkbox">
-    <input type="checkbox" class="custom-control-input" id="<%= dom_id(task) %>_checkbox" data-reflex="change->TaskReflex#toggle" data-id="<%= task.id %>" <%= 'checked' if task.complete? %>>
+    <input type="checkbox" class="custom-control-input" id="<%= dom_id(task) %>_checkbox" data-reflex="change->TaskReflex#toggle" data-id="<%= task.to_sgid.to_s %>" <%= 'checked' if task.complete? %>>
     <label for="<%= dom_id(task) %>_checkbox" class="custom-control-label">
       <% if task.complete? %>
         <del>
@@ -16,11 +16,11 @@
     </label>
   </div>
   <div class="collapse mt-2" id="collapse-<%= task.id %>" data-task-target="collapse">
-    <%= bootstrap_form_with model: task, url: '', layout: :inline, html: { class: "mb-2" }, data: { reflex: "submit->Task#update", id: task.id } do |form| %>
+    <%= bootstrap_form_with model: task, url: '', layout: :inline, html: { class: "mb-2" }, data: { reflex: "submit->Task#update", id: task.to_sgid.to_s } do |form| %>
       <%= form.text_field :name, skip_label: true, class: "mr-2" %>
       <%= form.primary "Update" %>
     <% end %>
-    <%= select_tag :assignee, options_from_collection_for_select(current_team.users, :id, :name, task.assignee_id), prompt: "Assign user", class: "custom-select", data: { reflex: "change->Task#assign", id: task.id } %>
+    <%= select_tag :assignee, options_from_collection_for_select(current_team.users, :id, :name, task.assignee_id), prompt: "Assign user", class: "custom-select", data: { reflex: "change->Task#assign", id: task.to_sgid.to_s } %>
   </div>
   <div class="d-flex">
     <%= link_to list_task_path(task.list, task), class: "mr-2" do %>
@@ -29,7 +29,7 @@
     <a href="#collapse-<%= task.id %>" data-toggle="collapse" class="mr-2">
       <i class="fa fa-edit text-primary"></i>
     </a>
-    <a href="#" data-action="click->task#destroy" data-id="<%= task.id %>">
+    <a href="#" data-action="click->task#destroy" data-id="<%= task.to_sgid.to_s %>">
       <i class="fa fa-times text-danger"></i>
     </a>
   </div>
